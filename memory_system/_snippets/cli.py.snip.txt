@@ -1,0 +1,18 @@
+## def main @ 121
+113:     p_search.add_argument("--limit", type=int, default=5)
+114:     p_search.add_argument("--preview-chars", type=int, default=220)
+115:     p_search.add_argument("--json", action="store_true", help="output JSON instead of readable text")
+116:     p_search.set_defaults(func=cmd_search)
+117: 
+118:     return parser
+119: 
+120: 
+121: def main(argv: list[str] | None = None) -> int:
+122:     parser = build_parser()
+123:     args = parser.parse_args(argv)
+124:     return args.func(args)
+125: 
+126: 
+127: if __name__ == "__main__":
+128:     sys.stdout.reconfigure(encoding="utf-8")
+129:     raise SystemExit(main())
